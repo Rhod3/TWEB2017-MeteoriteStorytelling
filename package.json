@@ -1,0 +1,22 @@
+{
+  "name": "tweb2017-meteoritestorytelling",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rhod3/TWEB2017-MeteoriteStorytelling.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rhod3/TWEB2017-MeteoriteStorytelling/issues"
+  },
+  "homepage": "https://github.com/Rhod3/TWEB2017-MeteoriteStorytelling#readme"
+}
