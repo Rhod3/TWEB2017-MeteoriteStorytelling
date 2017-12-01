@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/Rhod3/TWEB2017-MeteoriteStorytelling/issues"
   },
-  "homepage": "https://github.com/Rhod3/TWEB2017-MeteoriteStorytelling#readme"
+  "homepage": "https://github.com/Rhod3/TWEB2017-MeteoriteStorytelling#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "http-server": "^0.10.0"
+  }
 }
