@@ -44,10 +44,10 @@ d3.json("datasets/countries.topojson", function (error, geodata) {
         .append("path")
         .attr("d", path)
         .attr("class", function (d) { return (typeof color(d.properties.name) == "string" ? color(d.properties.name) : ""); });
-        //.on("mouseover", showTooltip)
-        //.on("mousemove", moveTooltip)
-        //.on("mouseout", hideTooltip)
-        //.on("click", clicked);
+    //.on("mouseover", showTooltip)
+    //.on("mousemove", moveTooltip)
+    //.on("mouseout", hideTooltip)
+    //.on("click", clicked);
 });
 
 var circles;
@@ -60,13 +60,23 @@ var div = d3.select("#meteoriteMap").append("div")
 d3.json("datasets/earthMeteoriteLandings.json", function (error, data) {
     if (error) return console.log(error); //unknown error, check the console
 
+    // Size scale
     var extent = d3.extent(data, (d) => {
         return +d.mass;
-    })
+    });
+    var rscale = d3.scale.linear()
+        .domain(extent)
+        .range([2, 20]);
 
-    var rscale = d3.scale.pow()
-        .domain([extent[0], extent[1]])
-        .range([3, 20])
+    // Color scale
+    // var colorScale = d3.scale.sequential(d3.interpolateYlOrRd);
+    var extentYear = d3.extent(data, (d) => {
+        return new Date(d.year).getFullYear();
+    });
+    var colorScale = d3.scale.quantize()
+        .domain(extentYear)
+        .range(["#fee5d9", "#fcbba1", "#fc9272", "#fb6a4a", "#ef3b2c", "#cb181d", "#99000d"]);
+
 
     // add circles to svg
     circles = svg.selectAll("circle")
@@ -87,13 +97,23 @@ d3.json("datasets/earthMeteoriteLandings.json", function (error, data) {
             }
         })
         .attr("r", (d) => {
-            if (d.geolocation !== undefined) {
+            if (d.geolocation !== undefined && d.mass !== undefined) {
+                //console.log(rscale(+d.mass));
                 return rscale(+d.mass);
             } else {
                 return 0;
             }
         })
-        .attr("fill", "red")
+        .attr("fill", (d) => {
+            if (d.geolocation !== undefined) {
+                console.log(new Date(d.year).getFullYear());
+                console.log(colorScale(new Date(d.year).getFullYear()));
+                return colorScale(new Date(d.year).getFullYear());
+            } else {
+                return "red";
+            }
+        })
+        .attr("stroke", "black")
         .on("mouseover", (d) => {
             div.transition()
                 .duration(20)
