@@ -69,7 +69,6 @@ d3.json("datasets/earthMeteoriteLandings.json", function (error, data) {
         .range([2, 20]);
 
     // Color scale
-    // var colorScale = d3.scale.sequential(d3.interpolateYlOrRd);
     var extentYear = d3.extent(data, (d) => {
         return new Date(d.year).getFullYear();
     });

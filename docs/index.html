@@ -1,114 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <link rel="icon" type="image/png" href="images/favicon/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="images/favicon/favicon-16x16.png" sizes="16x16" />
+  <link rel="icon" type="image/png" href="images/favicon/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="images/favicon/favicon-16x16.png" sizes="16x16" />
 
-    <title>Where do meteorites fall ?</title>
+  <title>Where do meteorites fall ?</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="css/full-width-pics.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="css/full-width-pics.css" rel="stylesheet">
 
-    <!-- Non-bootstrap css -->
-    <link href="css/mapGraph.css" rel="stylesheet">
-    <link href="css/meteoritePerYearGraph.css" rel="stylesheet">
+  <!-- Non-bootstrap css -->
+  <link href="css/mapGraph.css" rel="stylesheet">
+  <link href="css/meteoritePerYearGraph.css" rel="stylesheet">
 
-    <!-- Non-bootstrap script -->
-    <script src="http://d3js.org/d3.v3.min.js"></script>
-    <script src="http://d3js.org/d3.v4.min.js"></script>
-    <script src="http://d3js.org/topojson.v1.min.js"></script>
-    <script src="https://d3js.org/d3-array.v1.min.js"></script>
-    <script src="https://d3js.org/d3-geo.v1.min.js"></script>
-    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+  <!-- Non-bootstrap script -->
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://d3js.org/d3.v4.min.js"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
+  <script src="https://d3js.org/d3-array.v1.min.js"></script>
+  <script src="https://d3js.org/d3-geo.v1.min.js"></script>
+  <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
 
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">Where do meteorites fall ?</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li>
-          </ul>
-        </div>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Where do meteorites fall ?</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <!-- Header - set the background image for the header in the line below -->
-    <header class="bg-image-full">
-      <img class="img-fluid d-block mx-auto" src="https://cdnb1.artstation.com/p/assets/images/images/004/119/705/large/lukas-walzer-final-artstation.jpg" alt="">
-    </header>
+  <!-- Header - set the background image for the header in the line below -->
+  <header class="bg-image-full">
+    <img class="img-fluid d-block mx-auto" src="https://cdnb1.artstation.com/p/assets/images/images/004/119/705/large/lukas-walzer-final-artstation.jpg"
+      alt="">
+  </header>
 
-    <!-- Content section -->
-    <section class="py-5">
-      <div class="container">
-        <h1>How many meteorites fall on Earth per year ?</h1>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
-      </div>
-      <div id="meteoritePerYear" style="text-align:center;"></div>
-    </section>
+  <!-- Content section -->
+  <section class="py-5">
+    <div class="container">
+      <h1>How many meteorites fall on Earth per year ?</h1>
+      <p class="lead">Let's begin our analysis by observing if we are more likely to be struck by a meteorite than our ancestor</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto
+        commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
+    </div>
+    <div id="meteoritePerYear" style="text-align:center;"></div>
+  </section>
 
-    <!-- Image Section - set the background image for the header in the line below -->
-    <section class="py-5 bg-image-full" style="background-image: url('https://unsplash.it/1900/1080?image=1081');">
-      <!-- Put anything you want here! There is just a spacer below for demo purposes! -->
-      <div style="height: 200px;"></div>
-    </section>
+  <!-- Image Section - set the background image for the header in the line below -->
+  <section class="py-5 bg-image-full" style="background-image: url('images/duality.jpg');">
+    <!-- Put anything you want here! There is just a spacer below for demo purposes! -->
+    <div style="height: 200px;"></div>
+  </section>
 
-    <!-- Content section -->
-    <section class="py-5">
-      <div class="container">
-        <h1>Where do meteorites fall the most ?</h1>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
-      <div id="meteoriteMap" style="text-align:center;"></div>
-      </div>
-    </section>
+  <!-- Content section -->
+  <section class="py-5">
+    <div class="container">
+      <h1>Where do meteorites fall the most ?</h1>
+      <p class="lead">Now that we established that there are more and more meteorite falls as year pass, let's see where they happen</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto
+        commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
+      <div id="meteoriteMap"></div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto
+        commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
-      </div>
-      <!-- /.container -->
-    </footer>
+  <!-- Image Section - set the background image for the header in the line below -->
+  <section class="py-5 bg-image-full" style="background-image: url('images/meteor_rain.jpg');">
+    <!-- Put anything you want here! There is just a spacer below for demo purposes! -->
+    <div style="height: 200px;"></div>
+  </section>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Content section -->
+  <section class="py-5">
+    <div class="container">
+      <h1>A note about the dataset</h1>
+      <p>The data we used in this little project are kindly <a href="https://data.nasa.gov/Space-Science/Meteorite-Landings/gh4g-9sfh">provided</a> by the NASA. We specificaly used the <a href="https://data.nasa.gov/resource/y77d-th95.json">JSON</a> version of this dataset.</p>
+    </div>
+  </section>
 
-    <script src="vendor/js/mapGraph.js"></script>
-    <script src="vendor/js/meteoritePerYearGraph.js"></script>
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+    </div>
+    <!-- /.container -->
+  </footer>
 
-  </body>
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script src="vendor/js/mapGraph.js"></script>
+  <script src="vendor/js/meteoritePerYearGraph.js"></script>
+
+</body>
 
 </html>
