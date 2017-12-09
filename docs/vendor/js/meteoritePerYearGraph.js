@@ -13,7 +13,7 @@ var y = d3.scaleLinear()
 // append the svg object to the body of the page
 // append a 'group' element to 'svg'
 // moves the 'group' element to the top left margin
-var svg = d3.select("#meteoritePerYear").append("svg")
+var svg2 = d3.select("#meteoritePerYear").append("svg")
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
   .append("g")
@@ -34,7 +34,7 @@ d3.csv("datasets/sales.csv", function (error, data) {
   y.domain([0, d3.max(data, function (d) { return d.sales; })]);
 
   // append the rectangles for the bar chart
-  svg.selectAll(".bar")
+  svg2.selectAll(".bar")
     .data(data)
     .enter().append("rect")
     .attr("class", "bar")
@@ -44,12 +44,12 @@ d3.csv("datasets/sales.csv", function (error, data) {
     .attr("height", function (d) { return height - y(d.sales); });
 
   // add the x Axis
-  svg.append("g")
+  svg2.append("g")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x));
 
   // add the y Axis
-  svg.append("g")
+  svg2.append("g")
     .call(d3.axisLeft(y));
 
 });
