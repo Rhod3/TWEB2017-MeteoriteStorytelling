@@ -1,68 +1,55 @@
 // set the dimensions and margins of the graph
-var margin = { top: 10, right: 30, bottom: 30, left: 40 },
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
-
-// parse the date / time
-var parseDate = d3.timeParse("%d-%m-%Y");
+var margin = { top: 20, right: 20, bottom: 30, left: 40 },
+  width = 960 - margin.left - margin.right,
+  height = 500 - margin.top - margin.bottom;
 
 // set the ranges
-var x = d3.scaleTime()
-    .domain([function (d) { return min(d.date); }, function (d) { return max(d.date); }])
-    .rangeRound([0, width]);
+var x = d3.scaleBand()
+  .range([0, width])
+  .padding(0.1);
 var y = d3.scaleLinear()
-    .range([height, 0]);
-
-// set the parameters for the histogram
-var histogram = d3.histogram()
-    .value(function (d) { return d.date; })
-    .domain(x.domain())
-    .thresholds(x.ticks(d3.timeMonth));
+  .range([height, 0]);
 
 // append the svg object to the body of the page
 // append a 'group' element to 'svg'
 // moves the 'group' element to the top left margin
-var svg = d3.select("body").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform",
-    "translate(" + margin.left + "," + margin.top + ")");
+var svg2 = d3.select("#meteoritePerYear").append("svg")
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+  .attr("transform",
+  "translate(" + margin.left + "," + margin.top + ")");
 
 // get the data
-d3.json("earthMeteoriteLandings.json", function (error, data) {
-    if (error) throw error;
+d3.csv("datasets/sales.csv", function (error, data) {
+  if (error) return console.log(error); //unknown error, check the console  
 
-    // format the data
-    data.forEach(function (d) {
-        d.date = parseDate(d.year);
-    });
+  // format the data
+  data.forEach(function (d) {
+    d.sales = +d.sales;
+  });
 
-    // group the data for the bars
-    var bins = histogram(data);
+  // Scale the range of the data in the domains
+  x.domain(data.map(function (d) { return d.salesperson; }));
+  y.domain([0, d3.max(data, function (d) { return d.sales; })]);
 
-    // Scale the range of the data in the y domain
-    y.domain([0, d3.max(bins, function (d) { return d.length; })]);
+  // append the rectangles for the bar chart
+  svg2.selectAll(".bar")
+    .data(data)
+    .enter().append("rect")
+    .attr("class", "bar")
+    .attr("x", function (d) { return x(d.salesperson); })
+    .attr("width", x.bandwidth())
+    .attr("y", function (d) { return y(d.sales); })
+    .attr("height", function (d) { return height - y(d.sales); });
 
-    // append the bar rectangles to the svg element
-    svg.selectAll("rect")
-        .data(bins)
-        .enter().append("rect")
-        .attr("class", "bar")
-        .attr("x", 1)
-        .attr("transform", function (d) {
-            return "translate(" + x(d.x0) + "," + y(d.length) + ")";
-        })
-        .attr("width", function (d) { return x(d.x1) - x(d.x0) - 1; })
-        .attr("height", function (d) { return height - y(d.length); });
+  // add the x Axis
+  svg2.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x));
 
-    // add the x Axis
-    svg.append("g")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
-
-    // add the y Axis
-    svg.append("g")
-        .call(d3.axisLeft(y));
+  // add the y Axis
+  svg2.append("g")
+    .call(d3.axisLeft(y));
 
 });
