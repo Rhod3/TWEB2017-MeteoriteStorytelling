@@ -3,6 +3,29 @@ var margin = { top: 20, right: 20, bottom: 30, left: 40 },
   width = 960 - margin.left - margin.right,
   height = 500 - margin.top - margin.bottom;
 
+function count(arr) {
+  var a = [], b = [], prev;
+
+  arr.sort();
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] !== prev) {
+      a.push(arr[i]);
+      b.push(1);
+    } else {
+      b[b.length - 1]++;
+    }
+    prev = arr[i];
+  }
+
+  return [a, b];
+}
+
+var	iso = d3.time.format.utc("%Y-%m-%dT%H:%M:%S.%L");
+
+function parseDate(date){
+  return iso.parse(date);
+}
+
 // set the ranges
 var x = d3.scaleBand()
   .range([0, width])
@@ -21,13 +44,17 @@ var svg2 = d3.select("#meteoritePerYear").append("svg")
   "translate(" + margin.left + "," + margin.top + ")");
 
 // get the data
-d3.csv("datasets/sales.csv", function (error, data) {
+d3.json("datasets/earthMeteoriteLandings.json", function (error, data) {
   if (error) return console.log(error); //unknown error, check the console  
 
   // format the data
   data.forEach(function (d) {
-    d.sales = +d.sales;
+    console.log(d.year);
+    d.year = parseDate(d.year).getFullYear();
+    console.log(d.year);
   });
+
+  console.log(data);
 
   // Scale the range of the data in the domains
   x.domain(data.map(function (d) { return d.salesperson; }));
