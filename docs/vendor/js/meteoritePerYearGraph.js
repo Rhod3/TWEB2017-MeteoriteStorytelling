@@ -27,7 +27,7 @@ var iso = d3.time.format.utc("%Y-%m-%dT%H:%M:%S.%L");
 
 // get the data
 d3.json("datasets/earthMeteoriteLandings.json", function (error, data) {
-  if (error) return console.log(error); //unknown error, check the console  
+  if (error) return console.log("datasets/earthMeteoriteLandings.json" + error); //unknown error, check the console  
 
   var date = [];
   var test = 0;
@@ -64,17 +64,15 @@ d3.json("datasets/earthMeteoriteLandings.json", function (error, data) {
   //var x.domain(a);
   // y.domain([0, d3.max(histogram.map(function (d) { return d.length; }))]);
 
+
+
+  var x = d3.scale.linear()
+    .domain([d3.min(date), d3.max(date)])
+    .range([0, width2]);
+
   var y = d3.scale.linear()
     .domain([0, d3.max(histogram, function (i) { return i.length; })])
     .range([0, height2]);
-
-  var x = d3.scale.linear()
-    .domain([0, d3.max(date)])
-    .range([0, width2]);
-
-  var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
 
   // append the svg object to the body of the page
   // append a 'group' element to 'svg'
@@ -83,8 +81,6 @@ d3.json("datasets/earthMeteoriteLandings.json", function (error, data) {
     .attr("width", width2)
     .attr("height", height2);
 
-  //var group = svg2.append("g")
-  //  .call(d3.axisBottom(x));
   // append the rectangles for the bar chart
   var bars2 = svg2.selectAll(".bar")
     .data(histogram)
@@ -95,5 +91,27 @@ d3.json("datasets/earthMeteoriteLandings.json", function (error, data) {
     .attr("x", function (d) { return x(d.x); })
     .attr("y", function (d) { return height2 - y(d.y); })
     .attr("width", 3)
-    .attr("height", function (d) { return y(d.y); });
+    .attr("height", function (d) { return y(d.y); })
+    .attr("fill", "darkblue");
+
+  //svg2.append("g")
+  //  .attr("transform", "translate(0," + height + ")")
+  //  .call(d3.axisBottom(x));
+
+  var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
+
+  var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+
+  svg2.append("g")
+    .attr("class", "x axis")
+    //.attr("transform", "translate(0," + height2 + ")")
+    .call(xAxis);
+
+  svg2.append("g")
+    .attr("class", "y axis")
+    .call(yAxis);
 });
