@@ -1,6 +1,8 @@
 // set the dimensions and margins of the graph
-var width2 = 1000,
-  height2 = 500;
+
+var margin = { top: 30, right: 50, bottom: 30, left: 50 },
+  width2 = 1200 - margin.left - margin.right,
+  height2 = 600 - margin.top - margin.bottom;
 
 function sortNumber(a, b) {
   return a - b;
@@ -78,8 +80,10 @@ d3.json("datasets/earthMeteoriteLandings.json", function (error, data) {
   // append a 'group' element to 'svg'
   // moves the 'group' element to the top left margin
   var svg2 = d3.select("#meteoritePerYear").append("svg")
-    .attr("width", width2)
-    .attr("height", height2);
+    .attr("width", width2 + margin.left + margin.right)
+    .attr("height", height2 + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");;
 
   // append the rectangles for the bar chart
   var bars2 = svg2.selectAll(".bar")
@@ -89,7 +93,7 @@ d3.json("datasets/earthMeteoriteLandings.json", function (error, data) {
 
   bars2.append("rect")
     .attr("x", function (d) { return x(d.x); })
-    .attr("y", function (d) { return y(d.y) - 20; })
+    .attr("y", function (d) { return y(d.y); })
     .attr("width", 3)
     .attr("height", function (d) { return height2 - y(d.y); })
     .attr("fill", "darkblue")
@@ -115,15 +119,14 @@ d3.json("datasets/earthMeteoriteLandings.json", function (error, data) {
 
   var yAxis = d3.svg.axis()
     .scale(y)
-    .orient("right");
+    .orient("left");
 
   svg2.append("g")
     .attr("class", "x axis")
-    .attr("transform", "translate(0," + (height2 - 20) + ")")
+    .attr("transform", "translate(0," + height2 + ")")
     .call(xAxis);
 
   svg2.append("g")
-    .attr("transform", "translate(0,-20)")
     .attr("class", "y axis")
     .call(yAxis);
 });
