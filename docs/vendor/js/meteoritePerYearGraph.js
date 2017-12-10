@@ -92,7 +92,22 @@ d3.json("datasets/earthMeteoriteLandings.json", function (error, data) {
     .attr("y", function (d) { return height2 - 20 - y(d.y); })
     .attr("width", 3)
     .attr("height", function (d) { return y(d.y); })
-    .attr("fill", "darkblue");
+    .attr("fill", "darkblue")
+    .on("mouseover", (d) => {
+      div.transition()
+        .duration(20)
+        .style("opacity", .9);
+      div.html(d.y + " fall(s) in " + d.x)
+        .style("left", (d3.event.pageX) + 10 + "px")
+        .style("top", (d3.event.pageY - 28) + "px");
+    })
+    .on("mouseout", (d) => {
+      div.transition()
+        .duration(50)
+        .style("opacity", 0)
+        .style("left", 0)
+        .style("top", 0);
+    });
 
   //svg2.append("g")
   //  .attr("transform", "translate(0," + height + ")")
@@ -102,16 +117,8 @@ d3.json("datasets/earthMeteoriteLandings.json", function (error, data) {
     .scale(x)
     .orient("bottom");
 
-  var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left");
-
   svg2.append("g")
     .attr("class", "x axis")
     .attr("transform", "translate(0," + (height2 - 20) + ")")
     .call(xAxis);
-
-  svg2.append("g")
-    .attr("class", "y axis")
-    .call(yAxis);
 });
