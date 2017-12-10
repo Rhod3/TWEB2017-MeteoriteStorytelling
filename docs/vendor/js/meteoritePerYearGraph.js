@@ -92,7 +92,22 @@ d3.json("datasets/earthMeteoriteLandings.json", function (error, data) {
     .attr("y", function (d) { return y(d.y); })
     .attr("width", 3)
     .attr("height", function (d) { return height2 - 20 - y(d.y); })
-    .attr("fill", "darkblue");
+    .attr("fill", "darkblue")
+    .on("mouseover", (d) => {
+      div.transition()
+        .duration(20)
+        .style("opacity", .9);
+      div.html(d.y + " fall(s) in " + d.x)
+        .style("left", (d3.event.pageX) + 10 + "px")
+        .style("top", (d3.event.pageY - 28) + "px");
+    })
+    .on("mouseout", (d) => {
+      div.transition()
+        .duration(50)
+        .style("opacity", 0)
+        .style("left", 0)
+        .style("top", 0);
+    });
 
   var xAxis = d3.svg.axis()
     .scale(x)
