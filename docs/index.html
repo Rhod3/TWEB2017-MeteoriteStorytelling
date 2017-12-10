@@ -46,23 +46,33 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home
+            <a class="nav-link" href="#home">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="https://github.com/Rhod3/TWEB2017-MeteoriteStorytelling">Github repo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="https://data.nasa.gov/Space-Science/Meteorite-Landings/gh4g-9sfh">Dataset</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+
+    <!-- Content section -->
+    <section class="py-5" id="home">
+      <div class="container">
+        <p>The goal of this website is to answer a simple question: <b>where are we the most likely to be struck by a meteorite fall ?</b></br>
+        We are going to try to answer this question by analysing two sub-questions, accompagned by two graphs:</p>
+        <ul>
+          <li><a href="#yearSection">How many meteorites fall on Earth per year ?</a></li>
+          <li><a href="#mapSection">Where do meteorites fall the most ?</a></li>
+        </ul>
+        <p>You can either click the links above to be redirected to the appropriate section, or scroll down through the beautiful art below.</p>
+      </div>
+    </section>
 
   <!-- Header - set the background image for the header in the line below -->
   <header class="bg-image-full">
@@ -71,10 +81,10 @@
   </header>
 
   <!-- Content section -->
-  <section class="py-5">
+  <section class="py-5" id="yearSection">
     <div class="container">
       <h1>How many meteorites fall on Earth per year ?</h1>
-      <p class="lead">Let's begin our analysis by observing if we are more likely to be struck by a meteorite than our ancestor</p>
+      <p class="lead">Let's begin our analysis by observing if we are more likely to be struck by a meteorite than our ancestors</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto
         commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
     </div>
@@ -88,17 +98,32 @@
   </section>
 
   <!-- Content section -->
-  <section class="py-5">
+  <section class="py-5" id="mapSection">
     <div class="container">
       <h1>Where do meteorites fall the most ?</h1>
       <p class="lead">Now that we established that there are more and more meteorite falls as year pass, let's see where they happen</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto
         commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
       <div id="meteoriteMap"></div>
+      <p></p>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto
         commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
     </div>
   </section>
+
+    <!-- Image Section - set the background image for the header in the line below -->
+    <section class="py-5 bg-image-full" style="background-image: url('images/meteorite_sky.png');">
+      <!-- Put anything you want here! There is just a spacer below for demo purposes! -->
+      <div style="height: 200px;"></div>
+    </section>
+  
+    <!-- Content section -->
+    <section class="py-5">
+      <div class="container">
+        <h1>But for real</h1>
+        <p>Let's be a little more serious about our analysis. One of the reasons why we have more meteorite fall in the recent years is probably due to the nature of these observations: blablabl</p>
+      </div>
+    </section>
 
   <!-- Image Section - set the background image for the header in the line below -->
   <section class="py-5 bg-image-full" style="background-image: url('images/meteor_rain.jpg');">
@@ -117,7 +142,7 @@
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+      <p class="m-0 text-center text-white">Copyright &copy; 2017 - <a href="https://github.com/BasileChatillon">Basile Châtillon</a> &amp; <a href="https://github.com/Rhod3">Nicolas Rod</a></p>
     </div>
     <!-- /.container -->
   </footer>
