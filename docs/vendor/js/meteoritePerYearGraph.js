@@ -68,7 +68,7 @@ d3.json("datasets/earthMeteoriteLandings.json", function (error, data) {
 
   var x = d3.scale.linear()
     .domain([d3.min(date), d3.max(date)])
-    .range([0, width2]);
+    .range([0, width2 - 20]);
 
   var y = d3.scale.linear()
     .domain([0, d3.max(histogram, function (i) { return i.length; })])
@@ -89,7 +89,7 @@ d3.json("datasets/earthMeteoriteLandings.json", function (error, data) {
 
   bars2.append("rect")
     .attr("x", function (d) { return x(d.x); })
-    .attr("y", function (d) { return height2 - y(d.y); })
+    .attr("y", function (d) { return height2 - 20 - y(d.y); })
     .attr("width", 3)
     .attr("height", function (d) { return y(d.y); })
     .attr("fill", "darkblue");
@@ -100,15 +100,15 @@ d3.json("datasets/earthMeteoriteLandings.json", function (error, data) {
 
   var xAxis = d3.svg.axis()
     .scale(x)
-    .orient("bottom")
+    .orient("bottom");
 
   var yAxis = d3.svg.axis()
     .scale(y)
-    .orient("left")
+    .orient("left");
 
   svg2.append("g")
     .attr("class", "x axis")
-    //.attr("transform", "translate(0," + height2 + ")")
+    .attr("transform", "translate(0," + (height2 - 20) + ")")
     .call(xAxis);
 
   svg2.append("g")
