@@ -17,3 +17,7 @@
 .tick line{
   opacity: 0.2;
 }
+
+path.domain {
+  cursor: default;
+}

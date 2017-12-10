@@ -4,10 +4,6 @@
     fill: #999;
     cursor: pointer;
   }
-
-  path.domain {
-    cursor: default;
-  }
   
   div.tooltip {
     position: absolute;
