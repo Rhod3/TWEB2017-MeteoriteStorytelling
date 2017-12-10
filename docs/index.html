@@ -54,7 +54,7 @@
             <a class="nav-link" href="https://github.com/Rhod3/TWEB2017-MeteoriteStorytelling">Github repo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://data.nasa.gov/Space-Science/Meteorite-Landings/gh4g-9sfh">Dataset</a>
+            <a class="nav-link" href="#datasetSection">Dataset</a>
           </li>
         </ul>
       </div>
@@ -89,7 +89,7 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto
         commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
     </div>
-    <div id="meteoritePerYear"></div>
+    <div id="meteoritePerYear" style="text-align:center;"></div>
   </section>
 
   <!-- Image Section - set the background image for the header in the line below -->
@@ -105,7 +105,7 @@
       <p class="lead">Now that we established that there are more and more meteorite falls as year pass, let's see where they happen</p>
       <p>In the map below are displayed all known meteorite falls. The size of the dot is in relation with the mass of the meteorite, while the color of the dot is in a darker shade of red as the fall occured in recent years.</p>
       <p>You can click on a country to zoom in, and hover on a dot to have some informations about the meteorite.</p>
-      <div id="meteoriteMap"></div>
+      <div id="meteoriteMap" style="text-align:center;"></div>
       <p></p>
       <p>There are a few interesting things to observe on this map.</p>
       <p>Firstly, it looks like a lot of the meteorite falls happenend either in East-USA, Europe, India and, proportionnaly to its size, Japan.</br>
@@ -118,7 +118,6 @@
 
     <!-- Image Section - set the background image for the header in the line below -->
     <section class="py-5 bg-image-full" style="background-image: url('images/meteorite_sky.png');">
-      <!-- Put anything you want here! There is just a spacer below for demo purposes! -->
       <div style="height: 200px;"></div>
     </section>
   
@@ -135,15 +134,14 @@
 
   <!-- Image Section - set the background image for the header in the line below -->
   <section class="py-5 bg-image-full" style="background-image: url('images/meteor_rain.jpg');">
-    <!-- Put anything you want here! There is just a spacer below for demo purposes! -->
     <div style="height: 200px;"></div>
   </section>
 
   <!-- Content section -->
-  <section class="py-5">
+  <section class="py-5" id="datasetSection">
     <div class="container">
       <h1>A note about the dataset</h1>
-      <p>The data we used in this little project are kindly <a href="https://data.nasa.gov/Space-Science/Meteorite-Landings/gh4g-9sfh">provided</a> by the NASA. We specificaly used the <a href="https://data.nasa.gov/resource/y77d-th95.json">JSON</a> version of this dataset.</p>
+      <p>The data we used in this little project are kindly <a href="https://data.nasa.gov/Space-Science/Meteorite-Landings/gh4g-9sfh">provided</a> by the NASA. We specificaly used a <a href="https://data.nasa.gov/resource/y77d-th95.json">JSON</a> version of this dataset.</p>
     </div>
   </section>
 
@@ -161,6 +159,7 @@
 
   <script src="vendor/js/mapGraph.js"></script>
   <script src="vendor/js/meteoritePerYearGraph.js"></script>
+  <script src="vendor/js/smoothScroll.js"></script>
 
 </body>
 

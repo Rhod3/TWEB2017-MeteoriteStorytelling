@@ -13,11 +13,10 @@ var path = d3.geo.path()
     .projection(projection);
 
 //Create an SVG
-var svg = d3.select("#meteoriteMap").append("svg")
+var svg = d3.select("#meteoriteMap")
+    .append("svg")
     .attr("width", width)
-    .attr("height", height)
-    .attr("display", "block")
-    .attr("margin", "auto");
+    .attr("height", height);
 
 //Group for the map features
 var features = svg.append("g")
@@ -38,6 +37,7 @@ d3.json("datasets/countries.topojson", function (error, geodata) {
         .on("click", clicked);
 });
 
+// Keep track of drawn dots
 var circles;
 
 // Define the div for the tooltip
@@ -60,7 +60,7 @@ d3.json("datasets/earthMeteoriteLandings.json", function (error, data) {
     var extentYear = d3.extent(data, (d) => {
         return new Date(d.year).getFullYear();
     });
-    console.log(extentYear);
+    //console.log("EXTENT YEAR " + extentYear);
     var colorScale = d3.scale.quantize()
         .domain(extentYear)
         .range(["#fee5d9", "#fcbba1", "#fc9272", "#fb6a4a", "#ef3b2c", "#cb181d", "#99000d"]);
