@@ -69,7 +69,7 @@ d3.json("datasets/earthMeteoriteLandings.json", function (error, data) {
     .range([0, height2]);
 
   var x = d3.scale.linear()
-    .domain([0, d3.max(date)])
+    .domain([d3.min(date), d3.max(date)])
     .range([0, width2]);
 
   var xAxis = d3.svg.axis()
@@ -95,5 +95,6 @@ d3.json("datasets/earthMeteoriteLandings.json", function (error, data) {
     .attr("x", function (d) { return x(d.x); })
     .attr("y", function (d) { return height2 - y(d.y); })
     .attr("width", 3)
-    .attr("height", function (d) { return y(d.y); });
+    .attr("height", function (d) { return y(d.y); })
+    .attr("fill", "darkblue");
 });
