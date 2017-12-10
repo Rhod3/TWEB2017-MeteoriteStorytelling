@@ -21,6 +21,9 @@
   "homepage": "https://github.com/Rhod3/TWEB2017-MeteoriteStorytelling#readme",
   "dependencies": {},
   "devDependencies": {
-    "http-server": "^0.10.0"
+    "file-system": "^2.2.2",
+    "geocoder": "^0.2.3",
+    "http-server": "^0.10.0",
+    "local-reverse-geocoder": "^0.4.0"
   }
 }
