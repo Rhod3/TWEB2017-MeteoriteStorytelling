@@ -64,8 +64,8 @@
     <!-- Content section -->
     <section class="py-5" id="home">
       <div class="container">
-        <p>The goal of this website is to answer a simple question: <b>where are we the most likely to be struck by a meteorite fall ?</b></br>
-        We are going to try to answer this question by analysing a dataset of all known meteorite falls. </br></br>
+        <p>The goal of this website is to answer a simple question: <b>should we fear being struck by a meteorite fall ?</b></br>
+        We are going to try to answer this question by analysing a dataset of all known meteorite falls.</br></br>
         We will split our analysis in two sub-questions, accompagned by two graphs:</p>
         <ul>
           <li><a href="#yearSection">How many meteorites fall on Earth per year ?</a></li>
@@ -86,10 +86,13 @@
     <div class="container">
       <h1>How many meteorites fall on Earth per year ?</h1>
       <p class="lead">Let's begin our analysis by observing if we are more likely to be struck by a meteorite than our ancestors</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto
-        commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
+      <p>The histogram below shows the number of fall during each year, the year axis spanning from the first to the last year present in the dataset.</p>
+      <div id="meteoritePerYear" style="text-align:center;"></div>
+      <p></br>At first glance, the trend we can see is quite alarming: from little to no fall a few centuries ago, we now experience quite a few each year.</p>
+      <p>Should we be worried ? Well, not really if you think about how this dataset was created. It is probably incomplete and we have no idea how many falls are missing for the previous centuries.
+        Data for the recent years are probably closer to the real number of falls, but even then we can't be sure all of them are recorded.
+      </p>
     </div>
-    <div id="meteoritePerYear" style="text-align:center;"></div>
   </section>
 
   <!-- Image Section - set the background image for the header in the line below -->
@@ -102,7 +105,7 @@
   <section class="py-5" id="mapSection">
     <div class="container">
       <h1>Where do meteorites fall the most ?</h1>
-      <p class="lead">Now that we established that there are more and more meteorite falls as year pass, let's see where they happen</p>
+      <p class="lead">After analysing how many falls happen each year, let's see where they take place</p>
       <p>In the map below are displayed all known meteorite falls. The size of the dot is in relation with the mass of the meteorite, while the color of the dot is in a darker shade of red as the fall occured in recent years.</p>
       <p>You can click on a country to zoom in, and hover on a dot to have some informations about the meteorite.</p>
       <div id="meteoriteMap" style="text-align:center;"></div>
@@ -111,7 +114,7 @@
       <p>Firstly, it looks like a lot of the meteorite falls happenend either in East-USA, Europe, India and, proportionnaly to its size, Japan.</br>
       So, what does that mean for those countries ? Should you really avoid them if you fear an unfortunate meteorite fall ?</p>
       <p>Well, if you only consider this dataset, yes, you should avoid them. Go live in a remote part of the world like estern China, north Canada or in the north of South America.</p>
-      <p>But let's be real and think about the nature of this dataset: it contains all the <i>recorded</i> meteorite falls. It means either that the fall has been observed, or that the meteorite has found afterward.</br>
+      <p>But let's be real and think again about the nature of this dataset: it contains all the <i>recorded</i> meteorite falls. It means either that the fall has been observed, or that the meteorite has found afterward.</br>
       It is then totally logical that the dataset tends to have falls located in heavily populated and modern area that care about this kind of things.</p>
     </div>
   </section>
