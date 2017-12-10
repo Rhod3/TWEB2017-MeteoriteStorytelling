@@ -84,7 +84,7 @@ d3.json("datasets/earthMeteoriteLandings.json", function (error, data) {
     .attr("height", height2);
 
   //var group = svg2.append("g")
-  //  .call(xAxis);
+  //  .call(d3.axisBottom(x));
   // append the rectangles for the bar chart
   var bars2 = svg2.selectAll(".bar")
     .data(histogram)

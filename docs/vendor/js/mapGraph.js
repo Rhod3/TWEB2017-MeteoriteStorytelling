@@ -93,8 +93,8 @@ d3.json("datasets/earthMeteoriteLandings.json", function (error, data) {
         })
         .attr("fill", (d) => {
             if (d.geolocation !== undefined) {
-                console.log(new Date(d.year).getFullYear());
-                console.log(colorScale(new Date(d.year).getFullYear()));
+                //console.log(new Date(d.year).getFullYear());
+                //console.log(colorScale(new Date(d.year).getFullYear()));
                 return colorScale(new Date(d.year).getFullYear());
             } else {
                 return "red";
