@@ -54,12 +54,13 @@ d3.json("datasets/earthMeteoriteLandings.json", function (error, data) {
     });
     var rscale = d3.scale.linear()
         .domain(extent)
-        .range([2, 20]);
+        .range([2, 15]);
 
     // Color scale
     var extentYear = d3.extent(data, (d) => {
         return new Date(d.year).getFullYear();
     });
+    console.log(extentYear);
     var colorScale = d3.scale.quantize()
         .domain(extentYear)
         .range(["#fee5d9", "#fcbba1", "#fc9272", "#fb6a4a", "#ef3b2c", "#cb181d", "#99000d"]);
@@ -105,7 +106,7 @@ d3.json("datasets/earthMeteoriteLandings.json", function (error, data) {
             div.transition()
                 .duration(20)
                 .style("opacity", .9);
-            div.html("Year " + new Date(d.year).getFullYear() + "<br/>" + d.mass + " g")
+            div.html("Year " + new Date(d.year).getFullYear() + "<br/>" + (d.mass / 1000.0) + " kg")
                 .style("left", (d3.event.pageX) + 10 + "px")
                 .style("top", (d3.event.pageY - 28) + "px");
         })
