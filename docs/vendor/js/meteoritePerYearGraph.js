@@ -89,9 +89,9 @@ d3.json("datasets/earthMeteoriteLandings.json", function (error, data) {
 
   bars2.append("rect")
     .attr("x", function (d) { return x(d.x); })
-    .attr("y", function (d) { return y(d.y); })
+    .attr("y", function (d) { return y(d.y) - 20; })
     .attr("width", 3)
-    .attr("height", function (d) { return height2 - 20 - y(d.y); })
+    .attr("height", function (d) { return height2 - y(d.y); })
     .attr("fill", "darkblue")
     .on("mouseover", (d) => {
       div.transition()
